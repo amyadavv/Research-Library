@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let timeout;
+    function debounce() {
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+            populateDiv()
+        }, 100);
+    }
+
+    function populateDiv() {
+        const a = document.getElementById("firstName").value;
+        const b = document.getElementById("secondName").value;
+        fetch("http://localhost:3000/ans?a=" + a + "&b=" + b)
+            .then(function (response) {
+                response.text()
+                    .then(function (ans) {
+                        document.getElementById("finalSum").innerHTML = ans;
+                    })
+            });
+    }
+
+</script>
+
+<body>
+    <input oninput="debounce()" id="firstName" type="text" placeholder="First Number"></input><br></br>
+    <input oninput="debounce()" id="secondName" type="text" placeholder="Second Number"></input> <br></br>
+    <div id="finalSum"></div>
+
+
+</body>
+
+</html>
