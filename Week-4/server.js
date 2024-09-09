@@ -24,8 +24,12 @@ app.get("/int", function (req, res) {
     const principal = parseInt(req.query.a);
     const time = parseInt(req.query.b);
     const amount = parseInt(req.query.c);
-    const ans = principal + time + amount;
-    res.send(ans.toString());
+    const interest = (principal * time * amount) / 100;
+    const total = amount + interest;
+    res.send({
+        total: total,
+        interest: interest
+    });
 
 })
 

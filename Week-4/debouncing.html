@@ -7,9 +7,9 @@
     <title>Document</title>
 </head>
 <script>
-    let timeout;
+    let timeout; 
     function debounce() {
-        clearTimeout(timeout);
+        clearTimeout(timeout); // at very first call this will return undefined which is totally fine
         timeout = setTimeout(function () {
             populateDiv()
         }, 100);
