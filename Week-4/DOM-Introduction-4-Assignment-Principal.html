@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    // function populateDiv() {
+    //     const a = document.getElementById("firstName").value;
+    //     const b = document.getElementById("secondName").value;
+    //using fetch 
+    //     fetch("http://localhost:3000/ans?a=" + a + "&b=" + b)
+    //         .then(function (response) {
+    //             // console.log(response);//this will return a promise<pending>
+    //              response.text()
+    //                 .then(function (ans) {
+    //                     // console.log(ans);
+    //                     document.getElementById("finalSum").innerHTML = ans;
+    //                 })
+    //         });
+    // }
+    // using async wait which is way more cleaner than fetch
+    async function populateDiv() {
+        const a = document.getElementById("firstName").value;
+        const b = document.getElementById("secondName").value;
+        const c = document.getElementById("thridName").value;
+        const response = await fetch("http://localhost:3000/int?a=" + a + "&b=" + b + "&c=" + c);
+        const ans = await response.text();
+        document.getElementById("finalSum").innerHTML = ans;
+    }
+</script>
+
+<body>
+    <input id="firstName" type="text" placeholder="First Number"></input><br></br>
+    <input id="secondName" type="text" placeholder="Second Number"></input> <br></br>
+    <input id="thridName" type="text" placeholder="Thrid Number"></input> <br></br>
+    <button onclick="populateDiv()">Calculate Sum</button>
+    <div id="finalSum"></div>
+
+</body>
+
+</html>
