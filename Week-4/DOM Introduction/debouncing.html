@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <script>
-    let timeout; 
+    let timeout;
     function debounce() {
         clearTimeout(timeout); // at very first call this will return undefined which is totally fine
         timeout = setTimeout(function () {
@@ -25,6 +25,15 @@
                         document.getElementById("finalSum").innerHTML = ans;
                     })
             });
+    }
+
+    function samplePromiseChaning() {
+        fetch("http://localhost:3000/ans?a=" + a + "&b=" + b)
+            .then(function (response) {
+                return response.text()
+            }).then(function (ans) {
+                document.getElementById("finalSum").innerHTML = ans;
+            })
     }
 
 </script>
