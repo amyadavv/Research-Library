@@ -10,25 +10,27 @@
     // function populateDiv() {
     //     const a = document.getElementById("firstName").value;
     //     const b = document.getElementById("secondName").value;
-        //using fetch 
-        //     fetch("http://localhost:3000/ans?a=" + a + "&b=" + b)
-        //         .then(function (response) {
-        //             // console.log(response);//this will return a promise<pending>
-        //              response.text()
-        //                 .then(function (ans) {
-        //                     // consolmentBye.log(ans);
-        //                     document.getEleId("finalSum").innerHTML = ans;
-        //                 })
-        //         });
-        // }
-        // using async wait which is way more cleaner than fetch
-        async function populateDiv() {
-            const a = document.getElementById("firstName").value;
-            const b = document.getElementById("secondName").value;
-            const response = await fetch("http://localhost:3000/ans?a=" + a + "&b=" + b);
-            const ans = await response.text();
-            document.getElementById("finalSum").innerHTML = ans;
-        }
+    //   using fetch 
+    //     fetch("http://localhost:3000/ans?a=" + a + "&b=" + b)
+    //         .then(function (response) {
+    //             // console.log(response);//this will return a promise<pending>
+    //              response.text()
+    //                 .then(function (ans) {
+    //                     // consolmentBye.log(ans);
+    //                     document.getEleId("finalSum").innerHTML = ans;
+    //                 })
+    //         });
+    // }
+
+    // using async wait which is way more cleaner than fetch
+    
+    async function populateDiv() {
+        const a = document.getElementById("firstName").value;
+        const b = document.getElementById("secondName").value;
+        const response = await fetch("http://localhost:3000/ans?a=" + a + "&b=" + b);
+        const ans = await response.text();
+        document.getElementById("finalSum").innerHTML = ans;
+    }
 </script>
 
 <body>
