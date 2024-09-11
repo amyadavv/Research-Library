@@ -7,20 +7,66 @@
     <title>Document</title>
 </head>
 <script>
-    function addTodo () {
-        const title = document.getElementById
+
+    // this is the bad/ugly way to do it 
+    // function addTodo() {
+    //     const title = document.getElementById("title").value;
+    //     const description = document.getElementById("description").value;
+    //     const originalHtml = document.getElementById("container").innerHTML;
+    //     document.getElementById("container").innerHTML = originalHtml + `<div>
+    //         <div>${title}</div>
+    //         <div>${description}</div>
+    //         <button>Mark as Done</button>
+    //         </div>
+
+    //     `
+    // }
+
+    // better way to do it 
+    let globalId = 1;
+
+    function markAsDone(todoId) {
+        const parent = document.getElementById(todoId);
+        parent.children[2].innerHTML = "Done!"
     }
+
+    function createChild(title, description, id) {
+        const child = document.createElement("div");
+        const firstGrandParent = document.createElement("div");
+        firstGrandParent.innerHTML = title;
+        const secondGrandParent = document.createElement("div");
+        secondGrandParent.innerHTML = description;
+        const thirdGrandParent = document.createElement("button");
+        thirdGrandParent.innerHTML = "Mark as done";
+        thirdGrandParent.setAttribute("onclick", `markAsDone(${id})`);
+        child.appendChild(firstGrandParent);
+        child.appendChild(secondGrandParent);
+        child.appendChild(thirdGrandParent)
+        child.setAttribute("id", id);
+        return child;
+    }
+    function addTodo() {
+        const title = document.getElementById("title").value;
+        const description = document.getElementById("description").value;
+        const parent = document.getElementById("todos");
+
+        parent.appendChild(createChild(title, description, globalId++));
+    }
+
 </script>
 
 <body>
 
     <div>
-        <input type="text" placeholder="title"> <br></br>
-        <input type="text" placeholder="description"> <br></br> 
-        <button>Add todo</button>
-        <input type="text" placeholder="title"> <br></br>
-        <input type="text" placeholder="description"> <br></br> 
-        <button>Add todo</button>
+        <input id="title" type="text" placeholder="title">
+        <br></br>
+        <input id="description" type="text" placeholder="description">
+        <br></br>
+        <button onclick="addTodo()">Add todo</button>
+        <div id="todos">
+
+        </div>
+
     </div>
 </body>
 
