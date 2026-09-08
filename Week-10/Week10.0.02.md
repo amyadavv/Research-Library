@@ -37,5 +37,10 @@ ORM - It maintains a very nice log of your database, how it is changed overtime 
 
 Note: Big thing to note - You need full access of postgres for the to work. You can either run it locally or buy a full db.
 
+# 3 Steps 
+
+1. Initialize prisma - go to the website, video is outdated. 
+2. Define your schema
+3. create migrations and update client
 
 
