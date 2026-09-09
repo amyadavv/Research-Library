@@ -7,3 +7,4 @@ NoSQL databases
 
 1. Store data in a schema-less fashion. Extremely lean and fast way to store data. 
 2. Examples - MongoDB
+
